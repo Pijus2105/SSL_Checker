@@ -14,6 +14,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.WheelInput;
 import org.openqa.selenium.interactions.WheelInput.ScrollOrigin;
@@ -32,9 +33,11 @@ public class Dynamic {
 		WebDriver driver;
 		WebDriverManager.chromedriver().setup();
 		System.setProperty("webdriver.chrome.driver", "C:\\chromedriver.exe");
-		 driver = new ChromeDriver();
-		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(40));
+		ChromeOptions option = new ChromeOptions();
+		option.addArguments("--remote-allow-origins=*");
+		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 		
 		File fileName = new File("C:\\Users\\Elphill\\eclipse-workspace\\Automation_Practice_J\\DataTable\\DataTable1.xlsx");
 		FileInputStream fis = new FileInputStream(fileName);
@@ -51,343 +54,343 @@ public class Dynamic {
 			 
 			driver.get("https://www.thesslstore.com/ssltools/ssl-checker.php#results");
 			
-			//1-IssueWire
+//			//1-IssueWire
 			WebElement first = driver.findElement(By.xpath("//input[@id='url']"));
 			Thread.sleep(5000);
 			first.sendKeys(sheet.getRow(0).getCell(0).getStringCellValue());
 			first.sendKeys(Keys.ENTER);
-			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).
-			
+//			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).
+//			
 			WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement rt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(5000);
-			
+//			
 			WebElement iframe = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigin = WheelInput.ScrollOrigin.fromElement(iframe);
 	        new Actions(driver).scrollFromOrigin(scrollOrigin, 100, 200).perform();
-			
+//			
 			File src = rt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(src, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/IssueWire.png"));
-						
+//						
 			Thread.sleep(5000);
-
-
-			
-			
-			
-			//2-DMR
-			
-			
+//
+//
+//			
+//			
+//			
+//			//2-DMR
+//			
+//			
 			WebElement second = driver.findElement(By.xpath("//input[@id='url']"));
 			second.clear();
 			Thread.sleep(5000);
 			second.sendKeys(sheet.getRow(1).getCell(0).getStringCellValue());
 			second.sendKeys(Keys.ENTER);
 			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).click();
-			
+//			
 			WebDriverWait secondwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			secondwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement secondwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
-			Thread.sleep(50000);
-			
-			
+//			
+//			Thread.sleep(50000);
+//			
+//			
 			WebElement frame = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOriginn = WheelInput.ScrollOrigin.fromElement(frame);
 	        new Actions(driver).scrollFromOrigin(scrollOriginn, 100, 200).perform();
-			
-					
+//			
+//					
 			File secondwaitrtsrc = secondwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(secondwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/DailyMusicRoll.png"));
-			
-
-	
-			
-			
-			//3-VideoPromotion
+//			
+//
+//	
+//			
+//			
+//			//3-VideoPromotion
 			WebElement Third = driver.findElement(By.xpath("//input[@id='url']"));
 			Third.clear();
 			Thread.sleep(5000);
 			Third.sendKeys(sheet.getRow(2).getCell(0).getStringCellValue());
 			Third.sendKeys(Keys.ENTER);
-			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).
-			
+//			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).
+//			
 			WebDriverWait Thirdwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Thirdwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Thirdwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
-			
+//			
+//			
 			WebElement VPC = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOriginVPC = WheelInput.ScrollOrigin.fromElement(VPC);
 	        new Actions(driver).scrollFromOrigin(scrollOriginVPC, 0, 250).perform();
-			
-			
+//			
+//			
 			File Thirdwaitrtsrc = Thirdwaitrt.getScreenshotAs(OutputType.FILE);
-			
+//			
 			FileUtils.copyFile(Thirdwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/VideoPromotion.png"));		 
-			 
-	
-			
-			
-		
-			
-	       //4-VideoIpsum
+//			 
+//	
+//			
+//			
+//		
+//			
+//	       //4-VideoIpsum
 			WebElement Fourth = driver.findElement(By.xpath("//input[@id='url']"));
 			Fourth.clear();
 			Thread.sleep(5000);
 			Fourth.sendKeys(sheet.getRow(3).getCell(0).getStringCellValue());
 			Fourth.sendKeys(Keys.ENTER);
-			//driver.findElement(By.xpath("//input[@id='CheckSSL']"))
-			
+//			//driver.findElement(By.xpath("//input[@id='CheckSSL']"))
+//			
 			WebDriverWait Fourthwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Fourthwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Fourthwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement ifram = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigi = WheelInput.ScrollOrigin.fromElement(ifram);
 	        new Actions(driver).scrollFromOrigin(scrollOrigi, 100, 200).perform();
-			
-			
-			
+//			
+//			
+//			
 			File Fourthwaitrtsrc = Fourthwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Fourthwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/VideoIpsum.png"));
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			
-			//5-MusicPromotion
+//			
+//			
+//			
+//			
+//			
+//			
+//			
+//			
+//			
+//			
+//			//5-MusicPromotion
 			WebElement Fifth = driver.findElement(By.xpath("//input[@id='url']"));
 			Fifth.clear();
 			Thread.sleep(5000);
 			Fifth.sendKeys(sheet.getRow(4).getCell(0).getStringCellValue());
 			Fifth.sendKeys(Keys.ENTER);
 			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
+//			
 			WebDriverWait Fifthwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Fifthwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Fifthwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement iframmpc = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigimpc = WheelInput.ScrollOrigin.fromElement(iframmpc);
 	        new Actions(driver).scrollFromOrigin(scrollOrigimpc, 100, 200).perform();
-			
+//			
 			File Fifthwaitrtsrc = Fifthwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Fifthwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/MusicPromotionClub.png"));
-			 
-			
-			
-			
-			
-			
-			
-			//6-Pro News
+//			 
+//			
+//			
+//			
+//			
+//			
+//			
+//			//6-Pro News
 			WebElement Six = driver.findElement(By.xpath("//input[@id='url']"));
 			Six.clear();
 			Thread.sleep(5000);
 			Six.sendKeys(sheet.getRow(5).getCell(0).getStringCellValue());
 			Six.sendKeys(Keys.ENTER);
 			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
+//			
 			WebDriverWait Sixwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Sixwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Sixwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement iframpro = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigipro = WheelInput.ScrollOrigin.fromElement(iframpro);
 	        new Actions(driver).scrollFromOrigin(scrollOrigipro, 100, 200).perform();
-			
+//			
 			File Sixwaitrtsrc = Sixwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Sixwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/ProNewsReport.png"));
-		
-	
-	
-	
-	
-			
-			
-			
-			//6-York Pedia
+//		
+//	
+//	
+//	
+//	
+//			
+//			
+//			
+//			//7-York Pedia
 			WebElement Seventh = driver.findElement(By.xpath("//input[@id='url']"));
 			Seventh.clear();
 			Thread.sleep(5000);
 			Seventh.sendKeys(sheet.getRow(6).getCell(0).getStringCellValue());
 			Seventh.sendKeys(Keys.ENTER);
 			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
+//			
 			WebDriverWait Seventhwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Seventhwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Seventhwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement iframyork = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigiyork = WheelInput.ScrollOrigin.fromElement(iframyork);
 	        new Actions(driver).scrollFromOrigin(scrollOrigiyork, 100, 200).perform();
-			
+//			
 			File Seventhwaitrtsrc = Seventhwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Seventhwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/Yorkpedia.png"));
-			
-			
-			
-			
-			
-			
-			
-			//6-worldfrontnews
+//			
+//			
+//			
+//			
+//			
+//			
+//			
+//			//8-worldfrontnews
 			WebElement Eitghth = driver.findElement(By.xpath("//input[@id='url']"));
 			Eitghth.clear();
 			Thread.sleep(5000);
 			Eitghth.sendKeys(sheet.getRow(7).getCell(0).getStringCellValue());
 			Eitghth.sendKeys(Keys.ENTER);
 			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
+//			
 			WebDriverWait Eitghthwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Eitghthwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Eitghthwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement iframfront = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigifront = WheelInput.ScrollOrigin.fromElement(iframfront);
 	        new Actions(driver).scrollFromOrigin(scrollOrigifront, 100, 200).perform();
-			
+//			
 			File Eitghthwaitrtsrc = Eitghthwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Eitghthwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/worldfrontnews.png"));
-			
-			
-			
-			//6-fastnewsmedia
+//			
+//			
+//			
+//			//9-fastnewsmedia
 			WebElement Nine = driver.findElement(By.xpath("//input[@id='url']"));
 			Nine.clear();
 			Thread.sleep(5000);
 			Nine.sendKeys(sheet.getRow(8).getCell(0).getStringCellValue());
 			Nine.sendKeys(Keys.ENTER);
-			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
+//			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
+//			
 			WebDriverWait Ninewait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Ninewait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Ninewaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement iframfast = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigifast = WheelInput.ScrollOrigin.fromElement(iframfast);
 	        new Actions(driver).scrollFromOrigin(scrollOrigifast, 100, 200).perform();
-			
+//			
 			File Ninewaitrtsrc = Ninewaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Ninewaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/fastnewsmedia.png"));
-			
-			
-			
-			
-			//6-allnewsstories
+//			
+//			
+//			
+//			
+//			//10-allnewsstories
 			WebElement Ten = driver.findElement(By.xpath("//input[@id='url']"));
 			Ten.clear();
 			Thread.sleep(5000);
 			Ten.sendKeys(sheet.getRow(9).getCell(0).getStringCellValue());
 			Ten.sendKeys(Keys.ENTER);
 			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
+//			
 			WebDriverWait Tenwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Tenwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Tenwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement iframall = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigiall = WheelInput.ScrollOrigin.fromElement(iframall);
 	        new Actions(driver).scrollFromOrigin(scrollOrigiall, 100, 200).perform();
-			
+//			
 			File Tenwaitrtsrc = Tenwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Tenwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/allnewsstories.png"));
-			
-			
-			
-			
-			//6-themagazineplus
+//			
+//			
+//			
+//			
+//			//11-themagazineplus
 			WebElement Eleven = driver.findElement(By.xpath("//input[@id='url']"));
 			Eleven.clear();
 			Thread.sleep(5000);
 			Eleven.sendKeys(sheet.getRow(10).getCell(0).getStringCellValue());
 			Eleven.sendKeys(Keys.ENTER);
 			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
+//			
 			WebDriverWait Elevenwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Elevenwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Elevenwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement iframagazine = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigimagazine = WheelInput.ScrollOrigin.fromElement(iframagazine);
 	        new Actions(driver).scrollFromOrigin(scrollOrigimagazine, 100, 200).perform();
-			
+//			
 			File Elevenwaitrtsrc = Elevenwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Elevenwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/themagazineplus.png"));
-	
-	
-			
-			
-			
-			
-			//6-switchingfashion
+//	
+//	
+//			
+//			
+//			
+//			
+//			//12-switchingfashion
 			WebElement Twelve = driver.findElement(By.xpath("//input[@id='url']"));
 			Twelve.clear();
 			Thread.sleep(5000);
 			Twelve.sendKeys(sheet.getRow(11).getCell(0).getStringCellValue());
 			Twelve.sendKeys(Keys.ENTER);
-			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
+//			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
+//			
 			WebDriverWait Twelvewait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Twelvewait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Twelvewaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement ifraswitch = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigiswitch = WheelInput.ScrollOrigin.fromElement(ifraswitch);
 	        new Actions(driver).scrollFromOrigin(scrollOrigiswitch, 100, 200).perform();
-	        
+//	        
 			File Twelvewaitrtsrc = Twelvewaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Twelvewaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/switchingfashion.png"));
-			
-			
-			
-			
-			//6-guruobserver
+//			
+//			
+//			
+//			
+//			//13-guruobserver
 			WebElement Thirteen = driver.findElement(By.xpath("//input[@id='url']"));
 			Thirteen.clear();
 			Thread.sleep(5000);
 			Thirteen.sendKeys(sheet.getRow(12).getCell(0).getStringCellValue());
 			Thirteen.sendKeys(Keys.ENTER);
 			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
+//			
 			WebDriverWait Thirteenwait = new WebDriverWait(driver, Duration.ofSeconds(50));
 			Thirteenwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
 			WebElement Thirteenwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
+//			
 			Thread.sleep(50000);
-			
+//			
 			WebElement ifrasguru = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigiguru = WheelInput.ScrollOrigin.fromElement(ifrasguru);
 	        new Actions(driver).scrollFromOrigin(scrollOrigiguru, 100, 200).perform();
-			
+//			
 			File Thirteenwaitrtsrc = Thirteenwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Thirteenwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/guruobserver.png"));
 	
@@ -412,33 +415,33 @@ public class Dynamic {
 			WebElement ifraswall = driver.findElement(By.xpath("//div[@class='chkserver']"));
 	        WheelInput.ScrollOrigin scrollOrigiwall = WheelInput.ScrollOrigin.fromElement(ifraswall);
 	        new Actions(driver).scrollFromOrigin(scrollOrigiwall, 100, 200).perform();
-	        
+	        Thread.sleep(50000);
 			File Fouteenwaitrtsrc = Fouteenwaitrt.getScreenshotAs(OutputType.FILE);
 			FileUtils.copyFile(Fouteenwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/yourdigitalwall.png"));
 			
 			
 			
 			//6-soulsplay
-			WebElement Fifteen = driver.findElement(By.xpath("//input[@id='url']"));
-			Fifteen.clear();
-			Thread.sleep(5000);
-			Fifteen.sendKeys(sheet.getRow(14).getCell(0).getStringCellValue());
-			Fifteen.sendKeys(Keys.ENTER);
-			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
-			
-			WebDriverWait Fifteenwait = new WebDriverWait(driver, Duration.ofSeconds(50));
-			Fifteenwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
-			WebElement Fifteenwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
-			
-			Thread.sleep(50000);
-			
-			WebElement ifrassouls = driver.findElement(By.xpath("//div[@class='chkserver']"));
-	        WheelInput.ScrollOrigin scrollOrigisouls = WheelInput.ScrollOrigin.fromElement(ifrassouls);
-	        new Actions(driver).scrollFromOrigin(scrollOrigisouls, 100, 200).perform();
-			
-			File Fifteenwaitrtsrc = Fifteenwaitrt.getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(Fifteenwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/soulsplay.png"));
-			
+//			WebElement Fifteen = driver.findElement(By.xpath("//input[@id='url']"));
+//			Fifteen.clear();
+//			Thread.sleep(5000);
+//			Fifteen.sendKeys(sheet.getRow(14).getCell(0).getStringCellValue());
+//			Fifteen.sendKeys(Keys.ENTER);
+//			//driver.findElement(By.xpath("//input[@id='CheckSSL']")).sendKeys(Keys.ENTER);
+//			
+//			WebDriverWait Fifteenwait = new WebDriverWait(driver, Duration.ofSeconds(50));
+//			Fifteenwait.until(ExpectedConditions.elementToBeClickable(By.xpath("//div[@class='chkserver']")));
+//			WebElement Fifteenwaitrt = driver.findElement(By.xpath("//div[@class='chkserver']"));
+//			
+//			Thread.sleep(50000);
+//			
+//			WebElement ifrassouls = driver.findElement(By.xpath("//div[@class='chkserver']"));
+//	        WheelInput.ScrollOrigin scrollOrigisouls = WheelInput.ScrollOrigin.fromElement(ifrassouls);
+//	        new Actions(driver).scrollFromOrigin(scrollOrigisouls, 100, 200).perform();
+//			
+//			File Fifteenwaitrtsrc = Fifteenwaitrt.getScreenshotAs(OutputType.FILE);
+//			FileUtils.copyFile(Fifteenwaitrtsrc, new File("C:/Users/Elphill/eclipse-workspace/Automation_Practice_J/Screenshot/soulsplay.png"));
+//			
 			
 			
 			
